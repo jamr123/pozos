@@ -52,6 +52,8 @@ void setup() {
   radio.stopListening();
   pasadoMillis = millis();
 
+  
+
   Serial.begin(9600);
 }
 

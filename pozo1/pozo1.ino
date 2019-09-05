@@ -36,8 +36,6 @@ int inA3 = 0;
 int inA4 = 0;
 String sendData = "";
 
-
-
 void setup() {
 
   pinMode(caudal1, INPUT_PULLUP);
