@@ -1,7 +1,7 @@
 #include <SPI.h>
 #include <RF24.h>
 
-RF24 radio(7, 8); // CE, CSN
+RF24 radio(9, 10); // CE, CSN
 const byte identificacion[6] = "00001";
 
 const int caudal1 = 2;
@@ -55,7 +55,7 @@ void loop() {
       calculoCaudal();
 
     }
-   const char texto[] = "Pozo 1";
+   const char texto[] = "Pozo 3";
    radio.write(&texto, sizeof(texto));
   
     pasadoMillis = millis();
