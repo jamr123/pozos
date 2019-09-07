@@ -103,10 +103,8 @@ class Ubidots:
                     print("variable creada")
                 elif response.status_code == 404:
                     print('Not Found.')
-                
-               
-                
             except Exception as e:
+                print(e)
                   
         
     def getVariable(self,device,varName):
