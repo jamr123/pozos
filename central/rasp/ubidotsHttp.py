@@ -36,7 +36,7 @@ class Ubidots:
 
         
     def auth(self):
-        response=get('http://httpbin.org/headers', headers={'x-test2': config.UBIDOTS_API_KEY})
+        response=requests.get(config.URI_CREAR_TOKEN, headers={'x-ubidots-apikey': config.UBIDOTS_API_KEY})
         if response.status_code == 200:
             print(response.json())
         elif response.status_code == 404:
