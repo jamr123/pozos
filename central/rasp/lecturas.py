@@ -1,5 +1,5 @@
 from time import sleep
-import ubidotsHttp.py
+import ubidotsHttp
 
 ubi=ubidotsHttp.Ubidots()
 
