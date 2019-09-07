@@ -37,9 +37,9 @@ class Ubidots:
         
     def auth(self):
         response=requests.post(config.URI_CREAR_TOKEN, headers={'x-ubidots-apikey': config.UBIDOTS_API_KEY})
-        print(response)
         if response.status_code == 201:
-            print(response.json())
+           self.token=response.json().token
+           print(self.token)
         elif response.status_code == 404:
             print('Not Found.')
         
