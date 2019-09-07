@@ -11,6 +11,29 @@ import json
 
 class Ubidots:
     token=None
+
+    pozo_1=[
+            config.UBIDOTS_POZO_1_NiVEL_1:0,
+            config.UBIDOTS_POZO_1_PRESION_1:0,
+            config.UBIDOTS_POZO_1_CAUDAL_1:0,
+            ]
+    pozo_2=[
+            config.UBIDOTS_POZO_2_NiVEL_1,
+            config.UBIDOTS_POZO_2_PRESION_1,
+            config.UBIDOTS_POZO_2_CAUDAL_1,
+           ]
+    pozo_3=[
+            config.UBIDOTS_POZO_3_NiVEL_1,
+            config.UBIDOTS_POZO_3_PRESION_1,
+            config.UBIDOTS_POZO_3_PRESION_2,
+            config.UBIDOTS_POZO_3_CAUDAL_1,
+            config.UBIDOTS_POZO_3_CAUDAL_2,
+           ]
+    temperaturas=[
+                config.UBIDOTS_TEMPERATURA_1,
+                config.UBIDOTS_TEMPERATURA_2,
+                config.UBIDOTS_TEMPERATURA_3,
+                ]
     
     
     
@@ -19,7 +42,7 @@ class Ubidots:
         try:
             self.auth()                                
             self.deviceFind()
-            #self.configVariables()
+            self.configVariables()
             #self.stop_threads =False
 
             #thread = threading.Thread(target=self.sync, args=())
@@ -55,8 +78,18 @@ class Ubidots:
             time.sleep(1)
 
     def configVariables(self):
-        for dato in config.UBIDOTS_VAR_NAMES:
-            print("data")   
+        for dato in config.VARS_POZO_1:
+               self.pozo_1[dato]=getVariable(config.UBIDOTS_POZO_1,dato)
+               time.sleep(1)
+        for dato in config.VARS_POZO_2:
+               self.pozo_1[dato]=getVariable(config.UBIDOTS_POZO_2,dato)
+               time.sleep(1)
+        for dato in config.VARS_POZO_3:
+               self.pozo_1[dato]=getVariable(config.UBIDOTS_POZO_3,dato)
+               time.sleep(1)
+        for dato in config.VARS_TEMPERATURAS:
+               self.pozo_1[dato]=getVariable(config.UBIDOTS_TEMPERATURAS,dato)
+               time.sleep(1)
                 
 
         
@@ -74,16 +107,20 @@ class Ubidots:
             except Exception as e:
                 print(e)    
         
-    def getVariable(self,varName):
+    def getVariable(self,device,varName):
         
         try:
+            uriHttp=config.URI_DEVICE+device+'/'+varName+'/'
+            response=requests.post(uriHttp,headers={'X-Auth-Token': self.token})
+            if response.status_code == 200:
+                res=response.json()
+                res=res['last_value']
+                res=res['value']
+                return res
+            elif response.status_code == 404:
+                return 0
+            time.sleep(1)
             
-            url=config.HTTP_VALUE+config.UBIDOTS_NAME_DEVICE+'/'+varName
-            data2='GET$'+url+'$'+self.token
-            ds2=self.readSerial(data2)
-            print(ds2)
-            ds1=ds2['last_value']
-            ds=ds1['value']
             return ds
         except Exception as e:
             print(e)

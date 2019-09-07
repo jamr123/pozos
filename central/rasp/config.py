@@ -71,7 +71,11 @@ VARS_POZO_2={
 
             }
 VARS_POZO_3={
-
+            UBIDOTS_POZO_3_NiVEL_1,
+            UBIDOTS_POZO_3_PRESION_1,
+            UBIDOTS_POZO_3_PRESION_2,
+            UBIDOTS_POZO_3_CAUDAL_1,
+            UBIDOTS_POZO_3_CAUDAL_2,
 
             }
 VARS_TEMPERATURAS_={
