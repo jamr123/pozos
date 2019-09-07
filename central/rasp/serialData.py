@@ -3,8 +3,9 @@ import serial
 import threading
 
 # configure the serial connections (the parameters differs on the device you are connecting to)
-ser =serial.Serial('/dev/ttyAMA0', 115200, timeout=1)
-#ser =serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+#ser =serial.Serial('/dev/ttyAMA0', 115200, timeout=1)
+ser =serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+ser.open()
 
 #http=httpRequest.Http()
 class Data:
