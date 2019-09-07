@@ -93,25 +93,27 @@ class Ubidots:
                 
 
         
-    def actualizarVal(self, varName, value):
+    def actualizarVal(self, device, varName, value):
         
-            data =json.dumps( {"value": value,"timestamp": math.trunc(time.time())*1000})
-
+            data ={"value": value,"timestamp": math.trunc(time.time())*1000}
             try:
+                uriHttp=config.URI_DEVICE+device+'/'+varName+'/values/'
+                response=requests.post(uriHttp,headers={'X-Auth-Token': self.token},data=data)
+                if response.status_code == 201:
+                    print("variable creada")
+                elif response.status_code == 404:
+                    print('Not Found.')
+                
                
-                url=config.HTTP_VALUE+config.UBIDOTS_NAME_DEVICE+'/'+varName+'/values/'
-                data2='POST$'+url+'$'+self.token +'$'+data
-                ds2=self.readSerial(data2)
-                print(ds2)
-                return ds2
+                
             except Exception as e:
-                print(e)    
+                  
         
     def getVariable(self,device,varName):
         
         try:
             uriHttp=config.URI_DEVICE+device+'/'+varName+'/'
-            response=requests.post(uriHttp,headers={'X-Auth-Token': self.token})
+            response=requests.get(uriHttp,headers={'X-Auth-Token': self.token})
             if response.status_code == 200:
                 res=response.json()
                 res=res['last_value']
