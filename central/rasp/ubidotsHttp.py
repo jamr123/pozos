@@ -40,9 +40,12 @@ class Ubidots:
 
     def __init__(self):
         try:
-            self.auth()                                
+            self.auth()
+            print("auth")                               
             self.deviceFind()
+            print("devices") 
             self.configVariables()
+            print("variables")
             self.stop_threads =False
 
             thread = threading.Thread(target=self.sync, args=())
