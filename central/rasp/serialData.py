@@ -1,8 +1,6 @@
 import time
 import serial
-import httpRequest
 import threading
-import json
 
 # configure the serial connections (the parameters differs on the device you are connecting to)
 #ser =serial.Serial('/dev/ttyAMA0', 115200, timeout=1)
@@ -20,8 +18,7 @@ class Data:
         thread.start()
 
     def sync(self):
-        js=None
-        i=0
+        
         while True:
             try:
                 s=ser.readline()
