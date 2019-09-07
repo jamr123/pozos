@@ -12,5 +12,4 @@ def signal_handler(sig, frame):
 while True:
 
     signal.signal(signal.SIGINT, signal_handler)
-    print("data")
     sleep(1)
