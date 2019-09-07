@@ -36,7 +36,7 @@ class Ubidots:
 
         
     def auth(self):
-        response=requests.get(config.URI_CREAR_TOKEN, headers={'x-ubidots-apikey': config.UBIDOTS_API_KEY})
+        response=requests.post(config.URI_CREAR_TOKEN, headers={'x-ubidots-apikey': config.UBIDOTS_API_KEY})
         print(response)
         if response.status_code == 201:
             print(response.json())
