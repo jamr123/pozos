@@ -89,6 +89,7 @@ class Ubidots:
                time.sleep(1)
         for dato in config.VARS_POZO_3:
                self.pozo_3[dato]=self.getVariable(config.UBIDOTS_POZO_3,dato)
+               time.sleep(1)
         for dato in config.VARS_TEMPERATURAS:
                self.temperaturas[dato]=self.getVariable(config.UBIDOTS_TEMPERATURAS,dato)
                time.sleep(1)
