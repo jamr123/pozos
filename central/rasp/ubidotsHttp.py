@@ -29,7 +29,7 @@ class Ubidots:
             config.UBIDOTS_POZO_3_CAUDAL_1,
             config.UBIDOTS_POZO_3_CAUDAL_2,
     }
-    temperaturas{
+    temperaturas={
                 config.UBIDOTS_TEMPERATURA_1,
                 config.UBIDOTS_TEMPERATURA_2,
                 config.UBIDOTS_TEMPERATURA_3,
@@ -43,11 +43,11 @@ class Ubidots:
             self.auth()                                
             self.deviceFind()
             self.configVariables()
-            #self.stop_threads =False
+            self.stop_threads =False
 
-            #thread = threading.Thread(target=self.sync, args=())
-            #thread.daemon = True                            
-            #thread.start()
+            thread = threading.Thread(target=self.sync, args=())
+            thread.daemon = True                            
+            thread.start()
             
 
         except Exception as e:
@@ -82,13 +82,13 @@ class Ubidots:
                self.pozo_1[dato]=getVariable(config.UBIDOTS_POZO_1,dato)
                time.sleep(1)
         for dato in config.VARS_POZO_2:
-               self.pozo_1[dato]=getVariable(config.UBIDOTS_POZO_2,dato)
+               self.pozo_2[dato]=getVariable(config.UBIDOTS_POZO_2,dato)
                time.sleep(1)
         for dato in config.VARS_POZO_3:
-               self.pozo_1[dato]=getVariable(config.UBIDOTS_POZO_3,dato)
+               self.pozo_3[dato]=getVariable(config.UBIDOTS_POZO_3,dato)
                time.sleep(1)
         for dato in config.VARS_TEMPERATURAS:
-               self.pozo_1[dato]=getVariable(config.UBIDOTS_TEMPERATURAS,dato)
+               self.temperaturas[dato]=getVariable(config.UBIDOTS_TEMPERATURAS,dato)
                time.sleep(1)
                 
 
@@ -132,12 +132,20 @@ class Ubidots:
         while True: 
             
             self.transmision=True
-            for dato in self.lecturas:
-                self.actualizarVal(dato,self.lecturas[dato])
-                time.sleep(1)
+            for dato in config.VARS_POZO_1:
+                    actualizarVal(config.UBIDOTS_POZO_1,dato,pozo_1[dato])
+                    time.sleep(1)
+            for dato in config.VARS_POZO_2:
+                    actualizarVal(config.UBIDOTS_POZO_2,dato,pozo_2[dato])
+                    time.sleep(1)
+            for dato in config.VARS_POZO_3:
+                    actualizarVal(config.UBIDOTS_POZO_3,pozo_3[dato])
+                    time.sleep(1)
+            for dato in config.VARS_TEMPERATURAS:
+                    actualizarVal(config.UBIDOTS_TEMPERATURAS,temperaturas[dato])
+                    time.sleep(1)
             
             self.transmision=False
-            print(self.lecturas)
             time.sleep(config.REPORT_TIMER)     
             
     def auth2(self):
