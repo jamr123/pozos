@@ -18,7 +18,7 @@ class Ubidots:
     def __init__(self):
         try:
             self.auth()                                
-            #self.deviceFind()
+            self.deviceFind()
             #self.configVariables()
             #self.stop_threads =False
 
@@ -39,21 +39,25 @@ class Ubidots:
         response=requests.post(config.URI_CREAR_TOKEN, headers={'x-ubidots-apikey': config.UBIDOTS_API_KEY})
         if response.status_code == 201:
            self.token=response.json()
-           print(self.token['token'])
+           self.token=self.token['token']
         elif response.status_code == 404:
             print('Not Found.')
         
         
     def deviceFind(self):
-        dev=json.dumps({"":""})
-        data='POST$https://industrial.api.ubidots.com/api/v1.6/devices/'+config.UBIDOTS_NAME_DEVICE+'/$'+self.token+'$'+dev
-        ds=self.readSerial(data)
-        self.variables = 0
+        for device in config.VARS_DEVICES:
+            uriHttp=config.URI_DEVICE+device+'/'
+            requests.post(uriHttp,headers={'X-Auth-Token': self.token})
+            if response.status_code == 201:
+                print("device creado")
+            elif response.status_code == 404:
+                print('Not Found.')
+            time.sleep(1)
 
     def configVariables(self):
         for dato in config.UBIDOTS_VAR_NAMES:
-                self.lecturas[dato]=self.getVariable(dato)
-                time.sleep(1)
+            print("data")   
+                
 
         
     def actualizarVal(self, varName, value):
