@@ -2,7 +2,7 @@ from time import sleep
 import ubidotsHttp
 import serialData
 
-ubi=ubidotsHttp.Ubidots()
+#ubi=ubidotsHttp.Ubidots()
 ser=serialData.Data()
 
 
