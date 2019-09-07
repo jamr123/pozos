@@ -85,9 +85,9 @@ class Ubidots:
                print(dato)
                self.pozo_1[dato]=self.getVariable(config.UBIDOTS_POZO_1,dato)
                time.sleep(1)
-        for dato in config.VARS_POZO_2:
+        for dato1 in config.VARS_POZO_2:
                print(dato)
-               self.pozo_2[dato]=self.getVariable(config.UBIDOTS_POZO_2,dato)
+               self.pozo_2[dato1]=self.getVariable(config.UBIDOTS_POZO_2,dato1)
                time.sleep(1)
         for dato in config.VARS_POZO_3:
                print(dato)
