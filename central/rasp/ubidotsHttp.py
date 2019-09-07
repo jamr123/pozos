@@ -18,21 +18,21 @@ class Ubidots:
             config.UBIDOTS_POZO_1_CAUDAL_1:0,
     }
     pozo_2={
-            config.UBIDOTS_POZO_2_NiVEL_1,
-            config.UBIDOTS_POZO_2_PRESION_1,
-            config.UBIDOTS_POZO_2_CAUDAL_1,
+            config.UBIDOTS_POZO_2_NiVEL_1,:0
+            config.UBIDOTS_POZO_2_PRESION_1:0,
+            config.UBIDOTS_POZO_2_CAUDAL_1:0,
     }
     pozo_3={
-            config.UBIDOTS_POZO_3_NiVEL_1,
-            config.UBIDOTS_POZO_3_PRESION_1,
-            config.UBIDOTS_POZO_3_PRESION_2,
-            config.UBIDOTS_POZO_3_CAUDAL_1,
-            config.UBIDOTS_POZO_3_CAUDAL_2,
+            config.UBIDOTS_POZO_3_NiVEL_1:0,
+            config.UBIDOTS_POZO_3_PRESION_1:0,
+            config.UBIDOTS_POZO_3_PRESION_2:0,
+            config.UBIDOTS_POZO_3_CAUDAL_1:0,
+            config.UBIDOTS_POZO_3_CAUDAL_2:0,
     }
     temperaturas={
-                config.UBIDOTS_TEMPERATURA_1,
-                config.UBIDOTS_TEMPERATURA_2,
-                config.UBIDOTS_TEMPERATURA_3,
+                config.UBIDOTS_TEMPERATURA_1:0,
+                config.UBIDOTS_TEMPERATURA_2:0,
+                config.UBIDOTS_TEMPERATURA_3:0,
     }
     
     
@@ -82,19 +82,14 @@ class Ubidots:
 
     def configVariables(self):
         for dato in config.VARS_POZO_1:
-               print(dato)
                self.pozo_1[dato]=self.getVariable(config.UBIDOTS_POZO_1,dato)
                time.sleep(1)
-        for dato1 in config.VARS_POZO_2:
-               print(dato)
-               self.pozo_2[dato1]=self.getVariable(config.UBIDOTS_POZO_2,dato1)
+        for dato in config.VARS_POZO_2:
+               self.pozo_2[dato]=self.getVariable(config.UBIDOTS_POZO_2,dato)
                time.sleep(1)
         for dato in config.VARS_POZO_3:
-               print(dato)
                self.pozo_3[dato]=self.getVariable(config.UBIDOTS_POZO_3,dato)
-               time.sleep(1)
         for dato in config.VARS_TEMPERATURAS:
-               print(dato)
                self.temperaturas[dato]=self.getVariable(config.UBIDOTS_TEMPERATURAS,dato)
                time.sleep(1)
                 
