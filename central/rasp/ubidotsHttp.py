@@ -79,16 +79,16 @@ class Ubidots:
 
     def configVariables(self):
         for dato in config.VARS_POZO_1:
-               self.pozo_1[dato]=getVariable(config.UBIDOTS_POZO_1,dato)
+               self.pozo_1[dato]=self.getVariable(config.UBIDOTS_POZO_1,dato)
                time.sleep(1)
         for dato in config.VARS_POZO_2:
-               self.pozo_2[dato]=getVariable(config.UBIDOTS_POZO_2,dato)
+               self.pozo_2[dato]=self.getVariable(config.UBIDOTS_POZO_2,dato)
                time.sleep(1)
         for dato in config.VARS_POZO_3:
-               self.pozo_3[dato]=getVariable(config.UBIDOTS_POZO_3,dato)
+               self.pozo_3[dato]=self.getVariable(config.UBIDOTS_POZO_3,dato)
                time.sleep(1)
         for dato in config.VARS_TEMPERATURAS:
-               self.temperaturas[dato]=getVariable(config.UBIDOTS_TEMPERATURAS,dato)
+               self.temperaturas[dato]=self.getVariable(config.UBIDOTS_TEMPERATURAS,dato)
                time.sleep(1)
                 
 
@@ -131,16 +131,16 @@ class Ubidots:
             
             self.transmision=True
             for dato in config.VARS_POZO_1:
-                    actualizarVal(config.UBIDOTS_POZO_1,dato,pozo_1[dato])
+                    self.actualizarVal(config.UBIDOTS_POZO_1,dato,pozo_1[dato])
                     time.sleep(1)
             for dato in config.VARS_POZO_2:
-                    actualizarVal(config.UBIDOTS_POZO_2,dato,pozo_2[dato])
+                    self.actualizarVal(config.UBIDOTS_POZO_2,dato,pozo_2[dato])
                     time.sleep(1)
             for dato in config.VARS_POZO_3:
-                    actualizarVal(config.UBIDOTS_POZO_3,pozo_3[dato])
+                    self.actualizarVal(config.UBIDOTS_POZO_3,pozo_3[dato])
                     time.sleep(1)
             for dato in config.VARS_TEMPERATURAS:
-                    actualizarVal(config.UBIDOTS_TEMPERATURAS,temperaturas[dato])
+                    self.actualizarVal(config.UBIDOTS_TEMPERATURAS,temperaturas[dato])
                     time.sleep(1)
             
             self.transmision=False
