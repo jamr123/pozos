@@ -79,7 +79,7 @@ VARS_POZO_3={
             UBIDOTS_POZO_3_CAUDAL_2,
 
             }
-VARS_TEMPERATURAS_={
+VARS_TEMPERATURAS={
                     UBIDOTS_TEMPERATURA_1,
                     UBIDOTS_TEMPERATURA_2,
                     UBIDOTS_TEMPERATURA_3,
