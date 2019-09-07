@@ -47,7 +47,7 @@ class Ubidots:
     def deviceFind(self):
         for device in config.VARS_DEVICES:
             uriHttp=config.URI_DEVICE+device+'/'
-            requests.post(uriHttp,headers={'X-Auth-Token': self.token})
+            response=requests.post(uriHttp,headers={'X-Auth-Token': self.token})
             if response.status_code == 201:
                 print("device creado")
             elif response.status_code == 404:
