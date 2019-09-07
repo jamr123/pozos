@@ -18,7 +18,7 @@ class Ubidots:
             config.UBIDOTS_POZO_1_CAUDAL_1:0,
     }
     pozo_2={
-            config.UBIDOTS_POZO_2_NiVEL_1:0
+            config.UBIDOTS_POZO_2_NiVEL_1:0,
             config.UBIDOTS_POZO_2_PRESION_1:0,
             config.UBIDOTS_POZO_2_CAUDAL_1:0,
     }
