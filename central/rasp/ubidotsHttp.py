@@ -82,15 +82,19 @@ class Ubidots:
 
     def configVariables(self):
         for dato in config.VARS_POZO_1:
+               print(dato)
                self.pozo_1[dato]=self.getVariable(config.UBIDOTS_POZO_1,dato)
                time.sleep(1)
         for dato in config.VARS_POZO_2:
+            print(dato)
                self.pozo_2[dato]=self.getVariable(config.UBIDOTS_POZO_2,dato)
                time.sleep(1)
         for dato in config.VARS_POZO_3:
+               print(dato)
                self.pozo_3[dato]=self.getVariable(config.UBIDOTS_POZO_3,dato)
                time.sleep(1)
         for dato in config.VARS_TEMPERATURAS:
+               print(dato)
                self.temperaturas[dato]=self.getVariable(config.UBIDOTS_TEMPERATURAS,dato)
                time.sleep(1)
                 
