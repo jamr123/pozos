@@ -51,6 +51,10 @@ class Ubidots:
             thread = threading.Thread(target=self.sync, args=())
             thread.daemon = True                            
             thread.start()
+
+            thread2 = threading.Thread(target=self.auth2, args=())
+            thread2.daemon = True                            
+            thread2.start()
             
 
         except Exception as e:
@@ -134,24 +138,25 @@ class Ubidots:
             
             self.transmision=True
             for dato in config.VARS_POZO_1:
-                    self.actualizarVal(config.UBIDOTS_POZO_1,dato,pozo_1[dato])
+                    self.actualizarVal(config.UBIDOTS_POZO_1,dato,self.pozo_1[dato])
                     time.sleep(1)
             for dato in config.VARS_POZO_2:
-                    self.actualizarVal(config.UBIDOTS_POZO_2,dato,pozo_2[dato])
+                    self.actualizarVal(config.UBIDOTS_POZO_2,dato,self.pozo_2[dato])
                     time.sleep(1)
             for dato in config.VARS_POZO_3:
-                    self.actualizarVal(config.UBIDOTS_POZO_3,pozo_3[dato])
+                    self.actualizarVal(config.UBIDOTS_POZO_3,self.pozo_3[dato])
                     time.sleep(1)
             for dato in config.VARS_TEMPERATURAS:
-                    self.actualizarVal(config.UBIDOTS_TEMPERATURAS,temperaturas[dato])
+                    self.actualizarVal(config.UBIDOTS_TEMPERATURAS,self.temperaturas[dato])
                     time.sleep(1)
             
             self.transmision=False
             time.sleep(config.REPORT_TIMER)     
             
     def auth2(self):
-        data='TOKEN$'+config.HTTP_CREATE_TOKEN+'$'+config.UBIDOTS_API_KEY
-        self.token=tk['token']
+        while True:
+            time.sleep(3600)
+            self.auth()
 
     
         
