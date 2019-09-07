@@ -12,28 +12,28 @@ import json
 class Ubidots:
     token=None
 
-    pozo_1=[
+    pozo_1={
             config.UBIDOTS_POZO_1_NiVEL_1:0,
             config.UBIDOTS_POZO_1_PRESION_1:0,
             config.UBIDOTS_POZO_1_CAUDAL_1:0,
-            ]
-    pozo_2=[
+    }
+    pozo_2={
             config.UBIDOTS_POZO_2_NiVEL_1,
             config.UBIDOTS_POZO_2_PRESION_1,
             config.UBIDOTS_POZO_2_CAUDAL_1,
-           ]
-    pozo_3=[
+    }
+    pozo_3={
             config.UBIDOTS_POZO_3_NiVEL_1,
             config.UBIDOTS_POZO_3_PRESION_1,
             config.UBIDOTS_POZO_3_PRESION_2,
             config.UBIDOTS_POZO_3_CAUDAL_1,
             config.UBIDOTS_POZO_3_CAUDAL_2,
-           ]
-    temperaturas=[
+    }
+    temperaturas{
                 config.UBIDOTS_TEMPERATURA_1,
                 config.UBIDOTS_TEMPERATURA_2,
                 config.UBIDOTS_TEMPERATURA_3,
-                ]
+    }
     
     
     
