@@ -50,6 +50,12 @@ UBIDOTS_TEMPERATURA_1="temperatura_1"
 UBIDOTS_TEMPERATURA_2="temperatura_2"
 UBIDOTS_TEMPERATURA_3="temperatura_3"
 
+#URIS
+URI_CREAR_TOKEN='https://industrial.api.ubidots.com/api/v1.6/auth/token/'
+URI_DEVICE='https://industrial.api.ubidots.com/api/v1.6/devices/'
+
+
+
 
 VARS_POZO_1={
             UBIDOTS_POZO_1_NiVEL_1,

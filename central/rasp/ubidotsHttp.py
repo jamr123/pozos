@@ -11,15 +11,6 @@ import json
 
 class Ubidots:
     token=None
-    stop_threads =False
-    api = None
-    datasource = None
-    device=None
-    variables=None
-    valueVariables=None
-    listaVariables=[]
-    varConnect=False
-    transmision=False
     
     
     
@@ -45,10 +36,11 @@ class Ubidots:
 
         
     def auth(self):
-        data='TOKEN$'+config.HTTP_CREATE_TOKEN+'$'+config.UBIDOTS_API_KEY
-        tk=self.readSerial(data)
-        print(tk)
-        self.token=tk['token']
+        response=get('http://httpbin.org/headers', headers={'x-test2': config.UBIDOTS_API_KEY})
+        if response.status_code == 200:
+            print(response.json())
+        elif response.status_code == 404:
+            print('Not Found.')
         
         
     def deviceFind(self):
