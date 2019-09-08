@@ -26,7 +26,7 @@ class Data:
                     s=ser.readline()
                     dato=s.decode("utf-8")
                     datos=dato.split('$')
-                    print(datos[0])
+                    self.procData(datos)
                   
             
             except Exception as e:
@@ -34,6 +34,25 @@ class Data:
 
             time.sleep(1)
 
+    def procData(self, data):
+        puntero=data[0]
+        if puntero =="POZO1":
+            print("data pozo1")
+
+        elif puntero =="POZO2":
+            print("data pozo1")
+
+        elif puntero =="POZO3":
+            print("data pozo1")
+
+        elif puntero =="TEMP1":
+            print("data pozo1")
+
+        elif puntero =="TEMP2":
+            print("data pozo1")
+
+        elif puntero =="TEMP3":
+            print("data pozo1")
    
 
     
