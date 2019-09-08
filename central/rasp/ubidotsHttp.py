@@ -108,7 +108,7 @@ class Ubidots:
             data ={"value": value,"timestamp": math.trunc(time.time())*1000}
             try:
                 uriHttp=config.URI_DEVICE+device+'/'+varName+'/values/'
-                response=requests.post(uriHttp,headers={'X-Auth-Token': self.token},data=data)
+                response=requests.post(uriHttp,headers={'X-Auth-Token': self.token},json=data)
                 if response.status_code == 201:
                     print("variable creada")
                 elif response.status_code == 404:
