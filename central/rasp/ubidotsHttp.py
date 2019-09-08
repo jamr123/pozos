@@ -138,7 +138,7 @@ class Ubidots:
     
     def sync(self):
         while True: 
-            
+            print("ACT>>>>>>>>>>>>>>>>>>>>>")
             self.transmision=True
             for dato in config.VARS_POZO_1:
                     self.actualizarVal(config.UBIDOTS_POZO_1,dato,self.pozo_1[dato])
