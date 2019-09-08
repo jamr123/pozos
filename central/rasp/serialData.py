@@ -1,6 +1,10 @@
 import time
 import serial
 import threading
+import config
+import ubidotsHttp
+
+ubi=ubidotsHttp.Ubidots()
 
 # configure the serial connections (the parameters differs on the device you are connecting to)
 #ser =serial.Serial('/dev/ttyAMA0', 115200, timeout=1)
@@ -38,8 +42,16 @@ class Data:
         puntero=data[0]
         if puntero =="POZO1":
             print("data pozo1")
-            nivel1=int(data[1])
+            nivel1=valorInstrumentacion(config.POZO_1_S1,int(data[1]),)
             print(nivel1)
+            nivel2=valorInstrumentacion(config.POZO_1_S2,int(data[2]),)
+            print(nivel2)
+            presion1=valorInstrumentacion(config.POZO_1_S3,int(data[3]),)
+            print(presion1)
+            presion2=valorInstrumentacion(config.POZO_1_S4,int(data[4]),)
+            print(presion1)
+            caudal1=data[5]
+            caudal2=data[6]
 
         elif puntero =="POZO2":
             print("data pozo2")
@@ -56,14 +68,14 @@ class Data:
         elif puntero =="TEMP3":
             print("data T3")
    
-    def valorInstrumentacion(self,data):
-        sen=data[0]
-        ri_min=data[1]
-        ri_max=data[2]
-        rp_min=data[3]
-        rp_max=data[4]
+    def valorInstrumentacion(self,calibracion,val):
+        
+        ri_min=calibracion[0]
+        ri_max=calibracion[1]
+        rp_min=calibracion[2]
+        rp_max=calibracion[4]
         try:
-            x=self.readInputCorriente(sen)
+            x=self.readInputCorriente(val)
             
             
             rangoInstrumentacion=ri_max-ri_min
@@ -77,7 +89,12 @@ class Data:
             return 0
     
 
-
+    def readInputCorriente(self,value):
+        adcMax=3723
+        mA=20
+        resolucion=20/3723
+        corriente=value*resolucion
+        return corriente
         
            
 

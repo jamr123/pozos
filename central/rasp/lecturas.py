@@ -3,7 +3,7 @@ import ubidotsHttp
 import serialData
 
 #ubi=ubidotsHttp.Ubidots()
-ser=serialData.Data()
+#ser=serialData.Data()
 
 
 

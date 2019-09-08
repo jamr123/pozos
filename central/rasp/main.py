@@ -1,9 +1,9 @@
 from time import sleep
-import lecturas
+import serialData
 import signal
 import sys
 
-IO=lecturas.Data()
+ser=serialData.Data()
 
 
 def signal_handler(sig, frame):
