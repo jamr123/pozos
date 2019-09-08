@@ -43,20 +43,38 @@ class Data:
         print(data)
         if puntero =="POZO1":
             print("data pozo1")
-            nivel1=self.valorInstrumentacion(config.POZO_1_S1,int(data[1]))
-            nivel1=float("{0:.2f}".format(nivel1))
-            print(nivel1)
-            nivel2=self.valorInstrumentacion(config.POZO_1_S2,int(data[2]))
+            d1=int(data[1])
+            if d1>0:
+                nivel1=self.valorInstrumentacion(config.POZO_1_S1,d1)
+                nivel1=float("{0:.2f}".format(nivel1))
+                print(nivel1)
+            else:
+                d1=0
+
+            d2=int(data[2])
+            if d2>0:   
+            nivel2=self.valorInstrumentacion(config.POZO_1_S2,d2)
             nivel2=float("{0:.2f}".format(nivel2))
             print(nivel2)
-            presion1=self.valorInstrumentacion(config.POZO_1_S3,int(data[3]))
-            presion1=float("{0:.2f}".format(presion1))
-            print(presion1)
-            presion2=self.valorInstrumentacion(config.POZO_1_S4,int(data[4]))
-            presion2=float("{0:.2f}".format(presion2))
-            print(presion1)
+            else:
+                d2=0
+            d3=int(data[3])
+            if d3>0:
+                presion1=self.valorInstrumentacion(config.POZO_1_S3,d3)
+                presion1=float("{0:.2f}".format(presion1))
+                print(presion1)
+            else:
+                d3=0
+            d4=int(data[4])
+            if d4>0:
+                presion2=self.valorInstrumentacion(config.POZO_1_S4,d4)
+                presion2=float("{0:.2f}".format(presion2))
+                print(presion1)
+            else:
+                d4=0
             caudal1=data[5]
             caudal2=data[6]
+
 
         elif puntero =="POZO2":
             print("data pozo2")
