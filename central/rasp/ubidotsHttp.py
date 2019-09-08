@@ -89,9 +89,7 @@ class Ubidots:
 
     def configVariables(self):
         for dato in config.VARS_POZO_1:
-               d1=self.getVariable(config.UBIDOTS_POZO_1,dato)
-               print(d1)
-               self.pozo_1[dato]=None
+               self.pozo_1[dato]=self.getVariable(config.UBIDOTS_POZO_1,dato)
                time.sleep(1)
         for dato in config.VARS_POZO_2:
                self.pozo_2[dato]=self.getVariable(config.UBIDOTS_POZO_2,dato)
@@ -111,7 +109,6 @@ class Ubidots:
             try:
                 uriHttp=config.URI_DEVICE+device+'/'+varName+'/values/'
                 response=requests.post(uriHttp,headers={'X-Auth-Token': self.token},json=data)
-                print(response)
                 if response.status_code == 201:
                     print("variable creada")
                 elif response.status_code == 404:
