@@ -121,7 +121,7 @@ class Data:
 
         elif puntero =="POZO3":
             print("data pozo3")
-             d21=int(data[1])
+            d21=int(data[1])
             if d21>0:
                 nivel21=self.valorInstrumentacion(config.POZO_3_S1,d21)
                 nivel21=float("{0:.2f}".format(nivel21))
