@@ -142,4 +142,3 @@ void calculoCaudal() {
   countCaudal2 = 0;
 
 }
-
