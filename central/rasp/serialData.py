@@ -69,7 +69,7 @@ class Data:
             if d4>0:
                 presion2=self.valorInstrumentacion(config.POZO_1_S4,d4)
                 presion2=float("{0:.2f}".format(presion2))
-                print(presion1)
+                print(presion2)
             else:
                 d4=0
             caudal1=data[5]
