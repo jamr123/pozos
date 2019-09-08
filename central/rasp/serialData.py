@@ -42,13 +42,13 @@ class Data:
         puntero=data[0]
         if puntero =="POZO1":
             print("data pozo1")
-            nivel1=valorInstrumentacion(config.POZO_1_S1,int(data[1]),)
+            nivel1=self.valorInstrumentacion(config.POZO_1_S1,int(data[1]))
             print(nivel1)
-            nivel2=valorInstrumentacion(config.POZO_1_S2,int(data[2]),)
+            nivel2=self.valorInstrumentacion(config.POZO_1_S2,int(data[2]))
             print(nivel2)
-            presion1=valorInstrumentacion(config.POZO_1_S3,int(data[3]),)
+            presion1=self.valorInstrumentacion(config.POZO_1_S3,int(data[3]))
             print(presion1)
-            presion2=valorInstrumentacion(config.POZO_1_S4,int(data[4]),)
+            presion2=self.valorInstrumentacion(config.POZO_1_S4,int(data[4]))
             print(presion1)
             caudal1=data[5]
             caudal2=data[6]
