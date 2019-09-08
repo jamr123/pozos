@@ -42,13 +42,12 @@ class Data:
         puntero=data[0]
         print(data)
         if puntero =="POZO1":
-            print("data pozo1")
             d1=int(data[1])
             if d1>0:
                 nivel1=self.valorInstrumentacion(config.POZO_1_S1,d1)
                 nivel1=float("{0:.2f}".format(nivel1))
                 ubi.pozo_1[config.UBIDOTS_POZO_1_NiVEL_1]=nivel1
-                print(nivel1)
+                #print(nivel1)
             else:
                 d1=0
 
@@ -56,7 +55,7 @@ class Data:
             if d2>0:   
                 nivel2=self.valorInstrumentacion(config.POZO_1_S2,d2)
                 nivel2=float("{0:.2f}".format(nivel2))
-                print(nivel2)
+                #print(nivel2)
             else:
                 d2=0
             d3=int(data[3])
@@ -64,14 +63,14 @@ class Data:
                 presion1=self.valorInstrumentacion(config.POZO_1_S3,d3)
                 presion1=float("{0:.2f}".format(presion1))
                 ubi.pozo_1[config.UBIDOTS_POZO_1_PRESION_1]=presion1
-                print(presion1)
+                #print(presion1)
             else:
                 d3=0
             d4=int(data[4])
             if d4>0:
                 presion2=self.valorInstrumentacion(config.POZO_1_S4,d4)
                 presion2=float("{0:.2f}".format(presion2))
-                print(presion2)
+                #print(presion2)
             else:
                 d4=0
             
@@ -82,13 +81,13 @@ class Data:
 
 
         elif puntero =="POZO2":
-            print("data pozo2")
+            #print("data pozo2")
             d11=int(data[1])
             if d11>0:
                 nivel11=self.valorInstrumentacion(config.POZO_2_S1,d11)
                 nivel11=float("{0:.2f}".format(nivel11))
                 ubi.pozo_2[config.UBIDOTS_POZO_2_NiVEL_1]=nivel11
-                print(nivel11)
+                #print(nivel11)
             else:
                 d11=0
 
@@ -96,7 +95,7 @@ class Data:
             if d12>0:   
                 nivel12=self.valorInstrumentacion(config.POZO_2_S2,d12)
                 nivel12=float("{0:.2f}".format(nivel12))
-                print(nivel12)
+                #print(nivel12)
             else:
                 d12=0
             d13=int(data[3])
@@ -104,14 +103,14 @@ class Data:
                 presion11=self.valorInstrumentacion(config.POZO_1_S3,d3)
                 presion11=float("{0:.2f}".format(presion11))
                 ubi.pozo_2[config.UBIDOTS_POZO_2_PRESION_1]=presion11
-                print(presion11)
+                #print(presion11)
             else:
                 d13=0
             d14=int(data[4])
             if d14>0:
                 presion12=self.valorInstrumentacion(config.POZO_2_S4,d14)
                 presion12=float("{0:.2f}".format(presion12))
-                print(presion12)
+                #print(presion12)
             else:
                 d14=0
             
@@ -120,13 +119,13 @@ class Data:
             caudal12=int(data[6])
 
         elif puntero =="POZO3":
-            print("data pozo3")
+            #print("data pozo3")
             d21=int(data[1])
             if d21>0:
                 nivel21=self.valorInstrumentacion(config.POZO_3_S1,d21)
                 nivel21=float("{0:.2f}".format(nivel21))
                 ubi.pozo_3[config.UBIDOTS_POZO_3_NiVEL_1]=nivel21
-                print(nivel21)
+                #print(nivel21)
             else:
                 d21=0
 
@@ -134,7 +133,7 @@ class Data:
             if d22>0:   
                 nivel22=self.valorInstrumentacion(config.POZO_3_S2,d22)
                 nivel22=float("{0:.2f}".format(nivel22))
-                print(nivel22)
+                #print(nivel22)
             else:
                 d22=0
             d23=int(data[3])
@@ -142,14 +141,14 @@ class Data:
                 presion21=self.valorInstrumentacion(config.POZO_3_S3,d23)
                 presion21=float("{0:.2f}".format(presion21))
                 ubi.pozo_3[config.UBIDOTS_POZO_3_PRESION_1]=presion21
-                print(presion21)
+                #print(presion21)
             else:
                 d23=0
             d24=int(data[4])
             if d24>0:
                 presion22=self.valorInstrumentacion(config.POZO_3_S4,d24)
                 presion22=float("{0:.2f}".format(presion22))
-                print(presion22)
+                #print(presion22)
             else:
                 d24=0
             
@@ -158,13 +157,16 @@ class Data:
             caudal22=int(data[6])
 
         elif puntero =="TEMP1":
-            print("data T1")
+            #print("data T1")
+            ubi.temperaturas[config.UBIDOTS_TEMPERATURA_1]=0
 
         elif puntero =="TEMP2":
-            print("data T2")
+            #print("data T2")
+            ubi.temperaturas[config.UBIDOTS_TEMPERATURA_1]=0
 
         elif puntero =="TEMP3":
-            print("data T3")
+            #print("data T3")
+            ubi.temperaturas[config.UBIDOTS_TEMPERATURA_1]=0
    
     def valorInstrumentacion(self,calibracion,val):
         
