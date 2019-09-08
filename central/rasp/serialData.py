@@ -74,7 +74,7 @@ class Data:
         ri_min=calibracion[0]
         ri_max=calibracion[1]
         rp_min=calibracion[2]
-        rp_max=calibracion[4]
+        rp_max=calibracion[3]
         try:
             x=self.readInputCorriente(val)
             
