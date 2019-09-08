@@ -40,7 +40,7 @@ class Ubidots:
 
     def __init__(self):
         print("ubidots")
-        """
+        
         try:
            
             self.auth()
@@ -62,7 +62,7 @@ class Ubidots:
 
         except Exception as e:
             print(e)
-        """
+        
     
     def threadCancel(self):
         self.stop_threads =True
