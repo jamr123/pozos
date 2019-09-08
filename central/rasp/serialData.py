@@ -53,9 +53,9 @@ class Data:
 
             d2=int(data[2])
             if d2>0:   
-            nivel2=self.valorInstrumentacion(config.POZO_1_S2,d2)
-            nivel2=float("{0:.2f}".format(nivel2))
-            print(nivel2)
+                nivel2=self.valorInstrumentacion(config.POZO_1_S2,d2)
+                nivel2=float("{0:.2f}".format(nivel2))
+                print(nivel2)
             else:
                 d2=0
             d3=int(data[3])
