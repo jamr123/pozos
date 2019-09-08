@@ -24,7 +24,8 @@ class Data:
             try:
                 if ser.inWaiting()>0:
                     s=ser.readline()
-                    print(s)
+                    dato=s.decode("utf-8")
+                    print(dato)
                   
             
             except Exception as e:
