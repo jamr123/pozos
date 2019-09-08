@@ -50,10 +50,10 @@ class Data:
             nivel2=float("{0:.2f}".format(nivel2))
             print(nivel2)
             presion1=self.valorInstrumentacion(config.POZO_1_S3,int(data[3]))
-            presion1=float("{0:.2f}".format(preion1))
+            presion1=float("{0:.2f}".format(presion1))
             print(presion1)
             presion2=self.valorInstrumentacion(config.POZO_1_S4,int(data[4]))
-            presion2=float("{0:.2f}".format(preion2))
+            presion2=float("{0:.2f}".format(presion2))
             print(presion1)
             caudal1=data[5]
             caudal2=data[6]
