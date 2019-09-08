@@ -140,10 +140,10 @@ class Ubidots:
         while True: 
             print("ACT>>>>>>>>>>>>>>>>>>>>>")
             self.transmision=True
-            print(config.VARS_POZO_1)
-            print(config.VARS_POZO_2)
-            print(config.VARS_POZO_3)
-            print(config.VARS_TEMPERATURAS)
+            print(self.pozo_1)
+            print(self.pozo_2)
+            print(self.pozo_3)
+            print(self.temperaturas)
             for dato in config.VARS_POZO_1:
                     self.actualizarVal(config.UBIDOTS_POZO_1,dato,self.pozo_1[dato])
                     time.sleep(1)
