@@ -26,7 +26,7 @@ class Data:
                     s=ser.readline()
                     dato=s.decode("utf-8")
                     dats=str(dato.split('$'))
-                    print(dato[1])
+                    print(dato[0])
                   
             
             except Exception as e:
