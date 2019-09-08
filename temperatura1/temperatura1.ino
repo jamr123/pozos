@@ -1,6 +1,11 @@
 
 #include <SPI.h>
 #include <RF24.h>
+#include <OneWire.h>                
+#include <DallasTemperature.h>
+ 
+OneWire ourWire(2);   
+DallasTemperature sensors(&ourWire);
 
 RF24 radio(9, 10); // CE, CSN
 const byte identificacion[6] = "00001";
@@ -52,6 +57,7 @@ void setup() {
   radio.stopListening();
 
   Serial.begin(9600);
+  sensors.begin();   
   pasadoMillis = millis();
 }
 
@@ -95,7 +101,10 @@ void loop() {
 
   if (presenteMillis > (pasadoMillis + 1000))
   {
-     enviarData(read_adc(1),read_adc(2),read_adc(3),read_adc(4),valCaudal1,valCaudal2);
+    sensors.requestTemperatures();   
+    float temp= sensors.getTempCByIndex(0); 
+
+    enviarData(temp);
     pasadoMillis = millis();
   }
 
@@ -104,15 +113,11 @@ void loop() {
 
 }
 
-void enviarData(int adc1, int adc2 ,int adc3, int adc4, int cdl1, int cdl2)
+void enviarData(float temp1,)
 {
   String sendDato = "POZO1";
-   sendDato =  sendDato + "$" + String(adc1);
-   sendDato =  sendDato + "$" + String(adc2);
-   sendDato =  sendDato + "$" + String(adc3);
-   sendDato =  sendDato + "$" + String(adc4);
-   sendDato =  sendDato + "$" + String(cdl1);
-   sendDato =  sendDato + "$" + String(cdl2);
+   sendDato =  sendDato + "$" + String(temp1);
+   sendDato =  sendDato + "$";
 
 
   Serial.println(sendDato);
