@@ -138,27 +138,30 @@ class Ubidots:
     
     def sync(self):
         while True: 
-            print("ACT>>>>>>>>>>>>>>>>>>>>>")
-            self.transmision=True
-            print(self.pozo_1)
-            print(self.pozo_2)
-            print(self.pozo_3)
-            print(self.temperaturas)
-            for dato in config.VARS_POZO_1:
-                    self.actualizarVal(config.UBIDOTS_POZO_1,dato,self.pozo_1[dato])
-                    time.sleep(1)
-            for dato in config.VARS_POZO_2:
-                    self.actualizarVal(config.UBIDOTS_POZO_2,dato,self.pozo_2[dato])
-                    time.sleep(1)
-            for dato in config.VARS_POZO_3:
-                    self.actualizarVal(config.UBIDOTS_POZO_3,dato,self.pozo_3[dato])
-                    time.sleep(1)
-            for dato in config.VARS_TEMPERATURAS:
-                    self.actualizarVal(config.UBIDOTS_TEMPERATURAS,dato,self.temperaturas[dato])
-                    time.sleep(1)
-            
-            self.transmision=False
-            time.sleep(config.REPORT_TIMER)     
+            try:
+                print("ACT>>>>>>>>>>>>>>>>>>>>>")
+                self.transmision=True
+                print(self.pozo_1)
+                print(self.pozo_2)
+                print(self.pozo_3)
+                print(self.temperaturas)
+                for dato in config.VARS_POZO_1:
+                        self.actualizarVal(config.UBIDOTS_POZO_1,dato,self.pozo_1[dato])
+                        time.sleep(1)
+                for dato in config.VARS_POZO_2:
+                        self.actualizarVal(config.UBIDOTS_POZO_2,dato,self.pozo_2[dato])
+                        time.sleep(1)
+                for dato in config.VARS_POZO_3:
+                        self.actualizarVal(config.UBIDOTS_POZO_3,dato,self.pozo_3[dato])
+                        time.sleep(1)
+                for dato in config.VARS_TEMPERATURAS:
+                        self.actualizarVal(config.UBIDOTS_TEMPERATURAS,dato,self.temperaturas[dato])
+                        time.sleep(1)
+                
+                self.transmision=False
+                time.sleep(config.REPORT_TIMER)
+            except Exception as e:
+                print(e)     
             
     def auth2(self):
         while True:
