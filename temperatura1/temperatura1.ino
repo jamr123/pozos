@@ -28,25 +28,15 @@ void setup() {
 
 
 void loop() {
-
-  presenteMillis =  millis();
-
-
-  if (presenteMillis > (pasadoMillis + 1000))
-  {
-    sensors.requestTemperatures();   
-    float temp= sensors.getTempCByIndex(0); 
-
-    enviarData(temp);
-    pasadoMillis = millis();
-  }
-
-
+sensors.requestTemperatures();   //Se envía el comando para leer la temperatura
+float temp= sensors.getTempCByIndex(0); //Se obtiene la temperatura en ºC
+enviarData(temp);
+delay(1000);
 
 
 }
 
-void enviarData(float temp1,)
+void enviarData(float temp1)
 {
   String sendDato = "TEMPERATURA1";
    sendDato =  sendDato + "$" + String(temp1);
@@ -60,22 +50,5 @@ void enviarData(float temp1,)
   sendDato.toCharArray(data, str_len);
   radio.write(&data, sizeof(data));
 
-
-}
-
-void isr_caudal1() {
-  countCaudal1 ++;
-}
-
-void isr_caudal2() {
-  countCaudal2 ++;
-}
-
-void calculoCaudal() {
-
-  valCaudal1 = (countCaudal1 * litrosPulso1) / intervaloCaudal;
-  valCaudal2 = (countCaudal2 * litrosPulso2) / intervaloCaudal;
-  countCaudal1 = 0;
-  countCaudal2 = 0;
 
 }
