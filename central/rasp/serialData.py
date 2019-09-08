@@ -40,6 +40,7 @@ class Data:
 
     def procData(self, data):
         puntero=data[0]
+        print(data)
         if puntero =="POZO1":
             print("data pozo1")
             nivel1=self.valorInstrumentacion(config.POZO_1_S1,int(data[1]))
