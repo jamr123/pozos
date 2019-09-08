@@ -25,8 +25,8 @@ class Data:
                 if ser.inWaiting()>0:
                     s=ser.readline()
                     dato=s.decode("utf-8")
-                    dats=str(dato.split('$'))
-                    print(dato[0])
+                    datos=str(dato.split('$'))
+                    print(datos[0])
                   
             
             except Exception as e:
