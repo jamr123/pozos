@@ -156,15 +156,15 @@ class Data:
             ubi.pozo_3[config.UBIDOTS_POZO_3_CAUDAL_1]=caudal21
             caudal22=int(data[6])
 
-        elif puntero =="TEMP1":
+        elif puntero =="TEMPERATURA1":
             #print("data T1")
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_1]=0
 
-        elif puntero =="TEMP2":
+        elif puntero =="TEMPERATURA1":
             #print("data T2")
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_1]=0
 
-        elif puntero =="TEMP3":
+        elif puntero =="TEMPERATURA1":
             #print("data T3")
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_1]=0
    
