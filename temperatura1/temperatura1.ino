@@ -31,7 +31,7 @@ void loop() {
 sensors.requestTemperatures();   //Se envía el comando para leer la temperatura
 float temp= sensors.getTempCByIndex(0); //Se obtiene la temperatura en ºC
 enviarData(temp);
-delay(1000);
+delay(5000);
 
 
 }

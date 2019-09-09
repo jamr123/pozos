@@ -27,6 +27,8 @@ volatile int litrosPulso2 = 100;
 volatile int valCaudal1 = 0;
 volatile int valCaudal2 = 0;
 
+volatile int segundosEnvio=0;
+const int intervaloEnvio=5;
 
 
 void setup() {
@@ -92,10 +94,23 @@ void loop() {
 
   presenteMillis =  millis();
 
+  
 
   if (presenteMillis > (pasadoMillis + 1000))
   {
-    enviarData(read_adc(1),read_adc(2),read_adc(3),read_adc(4),valCaudal1,valCaudal2);
+
+  segundosCaudal ++;
+  segundosEnvio ++;
+
+  if(segundosCaudal==intervaloCaudal){
+     segundosCaudal=0;
+     calculoCaudal();
+    }
+    if(segundosEnvio==intervaloEnvio){
+     segundosEnvio=0;
+     enviarData(read_adc(1),read_adc(2),read_adc(3),read_adc(4),valCaudal1,valCaudal2);
+    }
+    
     pasadoMillis = millis();
   }
 
@@ -103,6 +118,7 @@ void loop() {
 
 
 }
+
 
 void enviarData(int adc1, int adc2 ,int adc3, int adc4, int cdl1, int cdl2)
 {
