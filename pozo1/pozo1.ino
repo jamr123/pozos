@@ -120,6 +120,7 @@ void loop() {
 
 }
 
+
 void enviarData(int adc1, int adc2 ,int adc3, int adc4, int cdl1, int cdl2)
 {
   String sendDato = "POZO1";
