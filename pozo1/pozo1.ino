@@ -2,7 +2,7 @@
 #include <RF24.h>
 
 RF24 radio(9, 10); // CE, CSN
-const byte identificacion[6] = "00001";
+const uint64_t rAddress[] = {0x010000111111, 020000111111, 030000111111, 040000111111, 050000111111, 060000111111 };
 
 #define SELPIN 8 //Selection Pin 
 #define DATAOUT 5//MOSI 
@@ -50,7 +50,7 @@ void setup() {
   digitalWrite(SPICLOCK, LOW);
   
   radio.begin();
-  radio.openWritingPipe(identificacion);
+  radio.openWritingPipe(rAddress[0]);
   radio.setPALevel(RF24_PA_MAX);
   radio.stopListening();
 
