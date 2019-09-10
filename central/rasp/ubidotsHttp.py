@@ -12,27 +12,38 @@ import json
 class Ubidots:
     token=None
 
-    pozo_1={
+    pozos={
             config.UBIDOTS_POZO_1_NiVEL_1:0,
+            config.UBIDOTS_POZO_1_NiVEL_2:0,
             config.UBIDOTS_POZO_1_PRESION_1:0,
+            config.UBIDOTS_POZO_1_PRESION_2:0,
             config.UBIDOTS_POZO_1_CAUDAL_1:0,
-    }
-    pozo_2={
+            config.UBIDOTS_POZO_1_CAUDAL_2:0,
             config.UBIDOTS_POZO_2_NiVEL_1:0,
+            config.UBIDOTS_POZO_2_NiVEL_2:0,
             config.UBIDOTS_POZO_2_PRESION_1:0,
+            config.UBIDOTS_POZO_2_PRESION_2:0,
             config.UBIDOTS_POZO_2_CAUDAL_1:0,
-    }
-    pozo_3={
+            config.UBIDOTS_POZO_2_CAUDAL_2:0,
             config.UBIDOTS_POZO_3_NiVEL_1:0,
+            config.UBIDOTS_POZO_3_NiVEL_2:0,
             config.UBIDOTS_POZO_3_PRESION_1:0,
             config.UBIDOTS_POZO_3_PRESION_2:0,
             config.UBIDOTS_POZO_3_CAUDAL_1:0,
             config.UBIDOTS_POZO_3_CAUDAL_2:0,
-    }
+           }
     temperaturas={
                 config.UBIDOTS_TEMPERATURA_1:0,
                 config.UBIDOTS_TEMPERATURA_2:0,
                 config.UBIDOTS_TEMPERATURA_3:0,
+    }
+    estanques={
+            config.UBIDOTS_ESTANQUE_1_NiVEL_1:0,
+            config.UBIDOTS_ESTANQUE_1_NiVEL_2:0,
+            config.UBIDOTS_ESTANQUE_1_PRESION_1:0,
+            config.UBIDOTS_ESTANQUE_1_PRESION_2:0,
+            config.UBIDOTS_ESTANQUE_1_CAUDAL_1:0,
+            config.UBIDOTS_ESTANQUE_1_CAUDAL_2:0,
     }
     
     
@@ -88,15 +99,13 @@ class Ubidots:
             time.sleep(1)
 
     def configVariables(self):
-        for dato in config.VARS_POZO_1:
-               self.pozo_1[dato]=self.getVariable(config.UBIDOTS_POZO_1,dato)
+        for dato in config.VARS_POZOS:
+               self.pozos[dato]=self.getVariable(config.UBIDOTS_POZOS,dato)
                time.sleep(1)
-        for dato in config.VARS_POZO_2:
-               self.pozo_2[dato]=self.getVariable(config.UBIDOTS_POZO_2,dato)
+        for dato in config.VARS_ESTANQUES:
+               self.estanques[dato]=self.getVariable(config.UBIDOTS_ESTANQUES,dato)
                time.sleep(1)
-        for dato in config.VARS_POZO_3:
-               self.pozo_3[dato]=self.getVariable(config.UBIDOTS_POZO_3,dato)
-               time.sleep(1)
+               
         for dato in config.VARS_TEMPERATURAS:
                self.temperaturas[dato]=self.getVariable(config.UBIDOTS_TEMPERATURAS,dato)
                time.sleep(1)
@@ -141,19 +150,17 @@ class Ubidots:
             try:
                 print("ACT>>>>>>>>>>>>>>>>>>>>>")
                 self.transmision=True
-                print(self.pozo_1)
-                print(self.pozo_2)
-                print(self.pozo_3)
+                print(self.pozos)
+                print(self.estanques)
                 print(self.temperaturas)
-                for dato in config.VARS_POZO_1:
-                        self.actualizarVal(config.UBIDOTS_POZO_1,dato,self.pozo_1[dato])
+                for dato in config.VARS_POZOS:
+                        self.actualizarVal(config.UBIDOTS_POZOS,dato,self.pozos[dato])
                         time.sleep(1)
-                for dato in config.VARS_POZO_2:
-                        self.actualizarVal(config.UBIDOTS_POZO_2,dato,self.pozo_2[dato])
+
+                for dato in config.VARS_ESTANQUES:
+                        self.actualizarVal(config.UBIDOTS_ESTANQUES,dato,self.estanques[dato])
                         time.sleep(1)
-                for dato in config.VARS_POZO_3:
-                        self.actualizarVal(config.UBIDOTS_POZO_3,dato,self.pozo_3[dato])
-                        time.sleep(1)
+
                 for dato in config.VARS_TEMPERATURAS:
                         self.actualizarVal(config.UBIDOTS_TEMPERATURAS,dato,self.temperaturas[dato])
                         time.sleep(1)
