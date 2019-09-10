@@ -128,7 +128,7 @@ void loop() {
 }
 
 
-void enviarData(int adc1, int adc2 ,int adc3, int adc4, int cdl1, int cdl2,int act1,int act2,)
+void enviarData(int adc1, int adc2 ,int adc3, int adc4, int cdl1, int cdl2,int act1,int act2)
 {
   String sendDato = "POZO3";
    sendDato =  sendDato + "$" + String(adc1);
@@ -167,6 +167,6 @@ void calculoCaudal() {
   countCaudal1 = 0;
   countCaudal2 = 0;
   actCaudal1=1;
-  actCaudal2=1
+  actCaudal2=1;
 
 }
