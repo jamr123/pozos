@@ -1,4 +1,3 @@
-
 #include <SPI.h>
 #include <RF24.h>
 
@@ -25,7 +24,9 @@ volatile int segundosCaudal = 0;
 volatile int litrosPulso1 = 100;
 volatile int litrosPulso2 = 100;
 volatile int valCaudal1 = 0;
+volatile int actCaudal1=0;
 volatile int valCaudal2 = 0;
+volatile int actCaudal2=0;
 
 volatile int segundosEnvio=0;
 const int intervaloEnvio=5;
@@ -108,7 +109,13 @@ void loop() {
     }
     if(segundosEnvio==intervaloEnvio){
      segundosEnvio=0;
-     enviarData(read_adc(1),read_adc(2),read_adc(3),read_adc(4),valCaudal1,valCaudal2);
+     enviarData(read_adc(1),read_adc(2),read_adc(3),read_adc(4),valCaudal1,valCaudal2,actCaudal1,actCaudal2);
+     if(actCaudal1==1){
+      actCaudal1=0;
+      }
+      if(actCaudal2==1){
+       actCaudal2=0;
+      }
     }
     
     pasadoMillis = millis();
@@ -120,7 +127,7 @@ void loop() {
 }
 
 
-void enviarData(int adc1, int adc2 ,int adc3, int adc4, int cdl1, int cdl2)
+void enviarData(int adc1, int adc2 ,int adc3, int adc4, int cdl1, int cdl2,int act1,int act2)
 {
   String sendDato = "ESTANQUE1";
    sendDato =  sendDato + "$" + String(adc1);
@@ -129,6 +136,8 @@ void enviarData(int adc1, int adc2 ,int adc3, int adc4, int cdl1, int cdl2)
    sendDato =  sendDato + "$" + String(adc4);
    sendDato =  sendDato + "$" + String(cdl1);
    sendDato =  sendDato + "$" + String(cdl2);
+   sendDato =  sendDato + "$" + String(act1);
+   sendDato =  sendDato + "$" + String(act2);
    sendDato =  sendDato + "$";
 
 
@@ -151,10 +160,12 @@ void isr_caudal2() {
 }
 
 void calculoCaudal() {
-
+  
   valCaudal1 = (countCaudal1 * litrosPulso1) / intervaloCaudal;
   valCaudal2 = (countCaudal2 * litrosPulso2) / intervaloCaudal;
   countCaudal1 = 0;
   countCaudal2 = 0;
+  actCaudal1=1;
+  actCaudal2=1;
 
 }
