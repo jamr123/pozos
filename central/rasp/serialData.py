@@ -28,7 +28,7 @@ class Data:
             try:
                 if ser.inWaiting()>0:
                     s=ser.readline()
-                    print(s)
+                    
                     dato=s.decode("utf-8")
                     datos=dato.split('$')
                     self.procData(datos)
@@ -41,7 +41,7 @@ class Data:
 
     def procData(self, data):
         puntero=data[0]
-        
+        print(data)
         if puntero =="POZO1":
             d1=int(data[1])
             if d1>0:
@@ -218,17 +218,17 @@ class Data:
 
         elif puntero =="TEMPERATURA1":
             #print("data T1")
-            d41=int(data[1])
+            d41=float(data[1])
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_1]=d41
 
         elif puntero =="TEMPERATURA2":
             #print("data T2")
-            d51=int(data[1])
+            d51=float(data[1])
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_2]=d51
 
         elif puntero =="TEMPERATURA3":
             #print("data T3")
-            d61=int(data[1])
+            d61=float(data[1])
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_3]=d61
    
     def valorInstrumentacion(self,calibracion,val):
