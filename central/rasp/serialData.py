@@ -217,17 +217,17 @@ class Data:
 
 
         elif puntero =="TEMPERATURA1":
-            #print("data T1")
+            
             d41=float(data[1])
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_1]=d41
 
         elif puntero =="TEMPERATURA2":
-            #print("data T2")
+            
             d51=float(data[1])
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_2]=d51
 
         elif puntero =="TEMPERATURA3":
-            #print("data T3")
+            
             d61=float(data[1])
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_3]=d61
    
