@@ -45,6 +45,7 @@ class Data:
             d1=int(data[1])
             if d1>0:
                 nivel1=self.valorInstrumentacion(config.POZO_1_S1,d1)
+                nivel1=config.POZO_1_INSTALACION_NIVEL_1 - nivel1
                 nivel1=float("{0:.2f}".format(nivel1))
                 ubi.pozos[config.UBIDOTS_POZO_1_NiVEL_1]=nivel1
                 #print(nivel1)
@@ -54,6 +55,7 @@ class Data:
             d2=int(data[2])
             if d2>0:   
                 nivel2=self.valorInstrumentacion(config.POZO_1_S2,d2)
+                nivel2=config.POZO_1_INSTALACION_NIVEL_2 - nivel2
                 nivel2=float("{0:.2f}".format(nivel2))
                 ubi.pozos[config.UBIDOTS_POZO_1_NiVEL_2]=nivel2
                 #print(nivel2)
@@ -88,6 +90,7 @@ class Data:
             d11=int(data[1])
             if d11>0:
                 nivel11=self.valorInstrumentacion(config.POZO_2_S1,d11)
+                nivel11=config.POZO_2_INSTALACION_NIVEL_1 - nivel11
                 nivel11=float("{0:.2f}".format(nivel11))
                 ubi.pozos[config.UBIDOTS_POZO_2_NiVEL_1]=nivel11
                 #print(nivel11)
@@ -97,6 +100,7 @@ class Data:
             d12=int(data[2])
             if d12>0:   
                 nivel12=self.valorInstrumentacion(config.POZO_2_S2,d12)
+                nivel12=config.POZO_2_INSTALACION_NIVEL_2 - nivel12
                 nivel12=float("{0:.2f}".format(nivel12))
                 ubi.pozos[config.UBIDOTS_POZO_2_NiVEL_2]=nivel12
                 #print(nivel12)
@@ -104,7 +108,7 @@ class Data:
                 d12=0
             d13=int(data[3])
             if d13>0:
-                presion11=self.valorInstrumentacion(config.POZO_1_S3,d3)
+                presion11=self.valorInstrumentacion(config.POZO_2_S3,d3)
                 presion11=float("{0:.2f}".format(presion11))
                 ubi.pozos[config.UBIDOTS_POZO_2_PRESION_1]=presion11
                 #print(presion11)
@@ -129,6 +133,7 @@ class Data:
             d21=int(data[1])
             if d21>0:
                 nivel21=self.valorInstrumentacion(config.POZO_3_S1,d21)
+                nivel21=config.POZO_3_INSTALACION_NIVEL_1 - nivel21
                 nivel21=float("{0:.2f}".format(nivel21))
                 ubi.pozos[config.UBIDOTS_POZO_3_NiVEL_1]=nivel21
                 #print(nivel21)
@@ -138,6 +143,7 @@ class Data:
             d22=int(data[2])
             if d22>0:   
                 nivel22=self.valorInstrumentacion(config.POZO_3_S2,d22)
+                nivel22=config.POZO_3_INSTALACION_NIVEL_2 - nivel22
                 nivel22=float("{0:.2f}".format(nivel22))
                 ubi.pozos[config.UBIDOTS_POZO_3_NiVEL_2]=nivel22
                 #print(nivel22)
@@ -155,7 +161,7 @@ class Data:
             if d24>0:
                 presion22=self.valorInstrumentacion(config.POZO_3_S4,d24)
                 presion22=float("{0:.2f}".format(presion22))
-                ubi.pozos[config.UBIDOTS_POZO_3_PRESION_1]=presion22
+                ubi.pozos[config.UBIDOTS_POZO_3_PRESION_2]=presion22
                 #print(presion22)
             else:
                 d24=0
@@ -169,6 +175,7 @@ class Data:
             d31=int(data[1])
             if d31>0:
                 nivel31=self.valorInstrumentacion(config.ESTANQUE_1_S1,d31)
+                nivel31=config.ESTANQUE_1_INSTALACION_NIVEL_1 - nivel31
                 nivel31=float("{0:.2f}".format(nivel31))
                 ubi.estanques[config.UBIDOTS_ESTANQUE_1_NiVEL_1]=nivel31
                 #print(nivel1)
@@ -178,6 +185,7 @@ class Data:
             d32=int(data[2])
             if d32>0:   
                 nivel32=self.valorInstrumentacion(config.ESTANQUE_1_S2,d32)
+                nivel31=config.ESTANQUE_1_INSTALACION_NIVEL_2 - nivel32
                 nivel32=float("{0:.2f}".format(nivel32))
                 ubi.estanques[config.UBIDOTS_ESTANQUE_1_NiVEL_2]=nivel32
                 #print(nivel2)
@@ -220,7 +228,7 @@ class Data:
         elif puntero =="TEMPERATURA1":
             #print("data T3")
             d61=int(data[1])
-            ubi.temperaturas[config.UBIDOTS_TEMPERATURA_2]=d61
+            ubi.temperaturas[config.UBIDOTS_TEMPERATURA_3]=d61
    
     def valorInstrumentacion(self,calibracion,val):
         
