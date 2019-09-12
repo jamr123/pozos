@@ -48,7 +48,7 @@ void setup() {
   digitalWrite(SPICLOCK, LOW);
   
   radio.begin();
-  radio.openWritingPipe(rAddress[0]);
+  radio.openWritingPipe(rAddress[2]);
   radio.setPALevel(RF24_PA_MAX);
   radio.stopListening();
 
