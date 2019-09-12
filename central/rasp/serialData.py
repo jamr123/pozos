@@ -28,6 +28,7 @@ class Data:
             try:
                 if ser.inWaiting()>0:
                     s=ser.readline()
+                    print(s)
                     dato=s.decode("utf-8")
                     datos=dato.split('$')
                     self.procData(datos)
@@ -40,7 +41,7 @@ class Data:
 
     def procData(self, data):
         puntero=data[0]
-        print(data)
+        
         if puntero =="POZO1":
             d1=int(data[1])
             if d1>0:
