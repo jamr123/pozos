@@ -217,8 +217,8 @@ class Data:
 
 
         elif puntero =="TEMPERATURA1":
-            
             d41=float(data[1])
+            print(d41)
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_1]=d41
 
         elif puntero =="TEMPERATURA2":
