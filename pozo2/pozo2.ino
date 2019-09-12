@@ -2,7 +2,7 @@
 #include <RF24.h>
 
 RF24 radio(9, 10); // CE, CSN
-const uint64_t rAddress[] = {0x010000111111, 020000111111, 030000111111, 040000111111, 050000111111, 060000111111 };
+const uint64_t rAddress[] = {0x010000111111, 0x020000111111, 0x030000111111, 0x040000111111, 0x050000111111, 0x060000111111 };
 
 #define SELPIN 8 //Selection Pin 
 #define DATAOUT 5//MOSI 
@@ -27,7 +27,7 @@ volatile int valCaudal1 = 0;
 volatile int valCaudal2 = 0;
 
 volatile int segundosEnvio=0;
-const int intervaloEnvio=5;
+const int intervaloEnvio=1;
 
 
 void setup() {
@@ -158,6 +158,6 @@ void calculoCaudal() {
   valCaudal2 = (countCaudal2 * litrosPulso2) / intervaloCaudal;
   countCaudal1 = 0;
   countCaudal2 = 0;
-  
+ 
 
 }

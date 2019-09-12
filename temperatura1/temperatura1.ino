@@ -6,7 +6,7 @@
 OneWire onewire(2); 
 
 RF24 radio(9, 10); // CE, CSN
-const uint64_t rAddress[] = {0x010000111111, 020000111111, 030000111111, 040000111111, 050000111111, 060000111111 };
+const uint64_t rAddress[] = {0x010000111111, 0x020000111111, 0x030000111111, 0x040000111111, 0x050000111111, 0x060000111111 };
 
 
 volatile unsigned long presenteMillis = 0;
@@ -18,8 +18,6 @@ void setup() {
   radio.openWritingPipe(rAddress[3]);
   radio.setPALevel(RF24_PA_MAX);
   radio.stopListening();
-
- 
   Serial.begin(9600);  
   pasadoMillis = millis();
 }
@@ -61,7 +59,6 @@ void enviarData(String temp1)
 
 
 }
-
 
 bool sensor_read(float *result)
 {
