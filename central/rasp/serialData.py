@@ -220,12 +220,12 @@ class Data:
             d41=int(data[1])
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_1]=d41
 
-        elif puntero =="TEMPERATURA1":
+        elif puntero =="TEMPERATURA2":
             #print("data T2")
             d51=int(data[1])
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_2]=d51
 
-        elif puntero =="TEMPERATURA1":
+        elif puntero =="TEMPERATURA3":
             #print("data T3")
             d61=int(data[1])
             ubi.temperaturas[config.UBIDOTS_TEMPERATURA_3]=d61
