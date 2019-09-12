@@ -2,9 +2,8 @@
 #include <RF24.h>
 #include <OneWire.h>                
 #include <DallasTemperature.h>
- 
-OneWire ourWire(2);   
-DallasTemperature sensors(&ourWire);
+
+OneWire onewire(2); 
 
 RF24 radio(9, 10); // CE, CSN
 const uint64_t rAddress[] = {0x010000111111, 020000111111, 030000111111, 040000111111, 050000111111, 060000111111 };
@@ -20,8 +19,8 @@ void setup() {
   radio.setPALevel(RF24_PA_MAX);
   radio.stopListening();
 
-  Serial.begin(9600);
-  sensors.begin();   
+ 
+  Serial.begin(9600);  
   pasadoMillis = millis();
 }
 
@@ -29,18 +28,27 @@ void setup() {
 
 
 void loop() {
-sensors.requestTemperatures();   //Se envía el comando para leer la temperatura
-float temp= sensors.getTempCByIndex(0); //Se obtiene la temperatura en ºC
-enviarData(temp);
-delay(5000);
+float temperature;
+char tempC[6];
+  if (sensor_read(&temperature))
+  {
+    dtostrf(temperature, 3, 2, tempC);
+    enviarData(String(tempC));
+  }
+  else
+  {
+    Serial.println(F("Fallo de comunicacion con DS18B20"));
+  }
+
+delay(1000);
 
 
 }
 
-void enviarData(float temp1)
+void enviarData(String temp1)
 {
   String sendDato = "TEMPERATURA1";
-   sendDato =  sendDato + "$" + String(temp1);
+   sendDato =  sendDato + "$" + temp1;
    sendDato =  sendDato + "$";
 
 
@@ -52,4 +60,25 @@ void enviarData(float temp1)
   radio.write(&data, sizeof(data));
 
 
+}
+
+
+bool sensor_read(float *result)
+{
+  uint8_t data[12];
+  int i;
+  *result = -100.0;
+  onewire.reset();
+  onewire.skip();
+  onewire.write(0x44);
+  delay(1000);
+  if (!onewire.reset())
+    return false;
+  onewire.skip();
+  onewire.write(0xBE);
+  for (i = 0; i < 9; i++)
+    data[i] = onewire.read();
+  int16_t temp = (((int16_t)data[1]) << 11) | (((int16_t)data[0]) << 3);
+  *result = (float)temp * 0.0078125;
+  return true;
 }
