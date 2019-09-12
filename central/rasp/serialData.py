@@ -129,14 +129,14 @@ class Data:
             ubi.pozos[config.UBIDOTS_POZO_2_CAUDAL_2]=caudal12
 
         elif puntero =="POZO3":
-            #print("data pozo3")
+           
             d21=int(data[1])
             if d21>0:
                 nivel21=self.valorInstrumentacion(config.POZO_3_S1,d21)
                 nivel21=config.POZO_3_INSTALACION_NIVEL_1 - nivel21
                 nivel21=float("{0:.2f}".format(nivel21))
                 ubi.pozos[config.UBIDOTS_POZO_3_NiVEL_1]=nivel21
-                #print(nivel21)
+                
             else:
                 d21=0
 
@@ -146,7 +146,7 @@ class Data:
                 nivel22=config.POZO_3_INSTALACION_NIVEL_2 - nivel22
                 nivel22=float("{0:.2f}".format(nivel22))
                 ubi.pozos[config.UBIDOTS_POZO_3_NiVEL_2]=nivel22
-                #print(nivel22)
+                
             else:
                 d22=0
             d23=int(data[3])
@@ -154,7 +154,7 @@ class Data:
                 presion21=self.valorInstrumentacion(config.POZO_3_S3,d23)
                 presion21=float("{0:.2f}".format(presion21))
                 ubi.pozos[config.UBIDOTS_POZO_3_PRESION_1]=presion21
-                #print(presion21)
+                
             else:
                 d23=0
             d24=int(data[4])
